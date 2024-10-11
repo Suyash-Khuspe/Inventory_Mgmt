@@ -1,0 +1,49 @@
+﻿@model Inventory_Mgmt.Models.sale
+
+@{
+    ViewBag.Title = "Sale Details";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Sale Details</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4 text-right">
+                    @Html.DisplayName("Sale Product")
+                </dt>
+                <dd class="col-sm-8">
+                    <p class="form-control-plaintext">@Html.DisplayFor(model => model.sale_prod)</p>
+                </dd>
+
+                <dt class="col-sm-4 text-right">
+                    @Html.DisplayName("Sale Quantity")
+                </dt>
+                <dd class="col-sm-8">
+                    <p class="form-control-plaintext">@Html.DisplayFor(model => model.sale_qnty)</p>
+                </dd>
+
+                <dt class="col-sm-4 text-right">
+                    @Html.DisplayName("Sale Date")
+                </dt>
+                <dd class="col-sm-8">
+                    <p class="form-control-plaintext">@Html.DisplayFor(model => model.sale_date)</p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-1">
+            @Html.ActionLink("Edit", "Edit", "Sale", new { id = Model.id }, new { @class = "btn btn-outline-primary btn-block" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("Back to List", "DisplaySale", "Sale", new { @class = "btn btn-outline-secondary btn-block" })
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

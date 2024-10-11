@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Inventory_Mgmt.Models.sale>
+
+@{
+    ViewBag.Title = "DisplaySale";
+}
+
+<p>
+    @Html.ActionLink("Add New Sale", "SaleProduct", "Sale", new { }, new { @class = "btn btn-outline-primary btn-sm mx-1" })
+</p>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Sale List</h2>
+    <table class="table table-bordered table-light table-hover">
+        <thead>
+            <tr style="background-color: #f2f2f2; color: #333;">
+                <th class="text-center" style="font-size: 18px; padding: 12px;">
+                    @Html.DisplayName("Sale Product")
+                </th>
+                <th class="text-center" style="font-size: 18px; padding: 12px;">
+                    @Html.DisplayName("Sale Quantity")
+                </th>
+                <th class="text-center" style="font-size: 18px; padding: 12px;">
+                    @Html.DisplayName("Sale Date")
+                </th>
+                <th class="text-center" style="font-size: 18px; padding: 12px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center align-middle">@Html.DisplayFor(modelItem => item.sale_prod)</td>
+                        <td class="text-center align-middle">@Html.DisplayFor(modelItem => item.sale_qnty)</td>
+                        <td class="text-center align-middle">@Html.DisplayFor(modelItem => item.sale_date)</td>
+                        <td class="text-center align-middle">
+                            <div class="d-flex justify-content-between">
+                                <a href="@Url.Action("Edit", "Sale", new { id = item.id })" class="btn btn-outline-primary btn-sm w-100 mx-1">Edit</a>
+                                <a href="@Url.Action("Details", "Sale", new { id = item.id })" class="btn btn-outline-success btn-sm w-100 mx-1">Details</a>
+                                <a href="@Url.Action("Delete", "Sale", new { id = item.id })" class="btn btn-outline-danger btn-sm w-100 mx-1">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center">No sales available</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

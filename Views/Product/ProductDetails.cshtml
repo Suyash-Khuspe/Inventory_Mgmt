@@ -1,0 +1,42 @@
+﻿@model Inventory_Mgmt.Models.product
+
+@{
+    ViewBag.Title = "Product Details";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Product Details</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4 text-right">
+                    @Html.DisplayName("Product Name")
+                </dt>
+                <dd class="col-sm-8">
+                    <p class="form-control-plaintext">@Html.DisplayFor(model => model.product_name)</p>
+                </dd>
+
+                <dt class="col-sm-4 text-right">
+                    @Html.DisplayName("Product Quantity")
+                </dt>
+                <dd class="col-sm-8">
+                    <p class="form-control-plaintext">@Html.DisplayFor(model => model.product_qnty)</p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-1">
+            @Html.ActionLink("Edit", "UpdateProduct", "Product", new { id = Model.id }, new { @class = "btn btn-outline-primary btn-block" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("Back to List", "DisplayProduct", "Product", new { @class = "btn btn-outline-secondary btn-block" })
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

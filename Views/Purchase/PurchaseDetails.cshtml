@@ -1,0 +1,49 @@
+﻿@model Inventory_Mgmt.Models.purcahse
+
+@{
+    ViewBag.Title = "Purchase Details";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Purchase Details</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4 text-right">
+                    @Html.DisplayName("Purchase Product")
+                </dt>
+                <dd class="col-sm-8">
+                    <p class="form-control-plaintext">@Html.DisplayFor(model => model.purchase_prod)</p>
+                </dd>
+
+                <dt class="col-sm-4 text-right">
+                    @Html.DisplayName("Purchase Quantity")
+                </dt>
+                <dd class="col-sm-8">
+                    <p class="form-control-plaintext">@Html.DisplayFor(model => model.purchase_qnty)</p>
+                </dd>
+
+                <dt class="col-sm-4 text-right">
+                    @Html.DisplayName("Purchase Date")
+                </dt>
+                <dd class="col-sm-8">
+                    <p class="form-control-plaintext">@Html.DisplayFor(model => model.purchase_date)</p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-1">
+            @Html.ActionLink("Edit", "Edit", "Purchase", new { id = Model.id }, new { @class = "btn btn-outline-primary btn-block" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("Back to List", "DisplayPurchase", "Purchase", new { @class = "btn btn-outline-secondary btn-block" })
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

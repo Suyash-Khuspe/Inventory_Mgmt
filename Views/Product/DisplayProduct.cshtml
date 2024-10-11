@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Inventory_Mgmt.Models.product>
+@{
+    ViewBag.Title = "DisplayProduct";
+}
+
+<h6>Product List</h6>
+
+<p>
+    @Html.ActionLink("Add New Product", "CreateProduct", "Product", new { }, new { @class = "btn btn-outline-primary btn-sm  mx-1" })
+
+</p>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Product List</h2>
+    <table class="table table-bordered table-light table-hover">
+        <thead>
+            <tr style="background-color: #f2f2f2; color: #333;">
+                <th class="text-center" style="font-size: 18px; padding: 12px;">
+                    @Html.DisplayName("Product Name")
+                </th>
+                <th class="text-center" style="font-size: 18px; padding: 12px;">
+                    @Html.DisplayName("Product Quatity")
+                </th>
+                <th class="text-center" style="font-size: 18px; padding: 12px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center align-middle">@Html.DisplayFor(modelItem => item.product_name)</td>
+                        <td class="text-center align-middle">@Html.DisplayFor(modelItem => item.product_qnty)</td>
+                        <td class="text-center align-middle">
+                            <div class="d-flex justify-content-between">
+                                <a href="@Url.Action("UpdateProduct", "Product", new { id = item.id })" class="btn btn-outline-primary btn-sm w-100 mx-1">Edit</a>
+                                <a href="@Url.Action("ProductDetails", "Product", new { id = item.id })" class="btn btn-outline-success btn-sm w-100 mx-1">Details</a>
+                                <a href="@Url.Action("DeleteProduct", "Product", new { id = item.id })" class="btn btn-outline-danger btn-sm w-100 mx-1">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3" class="text-center">No products available</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
